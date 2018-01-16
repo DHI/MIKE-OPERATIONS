@@ -1,5 +1,5 @@
 Author: ank@dhigroup.com
-Date: 
+Date: 2018/01/16
 Version: 2017.2
 Downloading data from yr.no is relatively easy. 
 You should follow www.yr.no rules.
