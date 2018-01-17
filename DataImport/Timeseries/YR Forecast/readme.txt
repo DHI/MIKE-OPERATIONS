@@ -1,6 +1,8 @@
 Author: ank@dhigroup.com
 Date: 2018/01/16
 Version: 2017.2
+Supporting file: YR_stations.xlsx
+
 Downloading data from yr.no is relatively easy. 
 You should follow www.yr.no rules.
 
