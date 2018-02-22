@@ -15,7 +15,7 @@ def ImportTimeseriesFromTextFile():
     """
     
     # Set parameters
-    folderPath = 'C:\\Users\\aug\\Desktop\\Example_file\\MGI' # the folder where the files to import are located
+    folderPath = 'C:\\MGI' # the folder where the files to import are located
     targetTimeseriesGroupName = '/Output' # the group where the timeseries will be created / updated
     datetimeFormat = "dd.MM.yyyy  HH:mm" # tge date time format
     fileExtention="*.txt" # the extention of the input files
@@ -44,7 +44,10 @@ def ImportTimeseriesFromTextFile():
                 lastTimestep = DateTime.MinValue
             else:
                 timestepts = ts.FetchAll()
-                lastTimestep = timestepts[timestepts.Count - 1].XValue
+                if(timestepts.Count > 0):
+                    lastTimestep = timestepts[timestepts.Count - 1].XValue
+                else:
+                    lastTimestep = DateTime.MinValue
             lines = File.ReadAllLines(file);
             for line in lines:
                 if count >= firstLine:
