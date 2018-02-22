@@ -15,7 +15,7 @@ def ImportTimeseriesFromTextFile():
     """
     
     # Set parameters
-    folderPath = 'C:\\MGI' # the folder where the files to import are located
+    folderPath = 'C:\\Data' # the folder where the files to import are located
     targetTimeseriesGroupName = '/Output' # the group where the timeseries will be created / updated
     datetimeFormat = "dd.MM.yyyy  HH:mm" # tge date time format
     fileExtention="*.txt" # the extention of the input files
