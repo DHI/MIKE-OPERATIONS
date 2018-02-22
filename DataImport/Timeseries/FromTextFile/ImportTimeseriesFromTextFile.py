@@ -29,7 +29,7 @@ def ImportTimeseriesFromTextFile():
     tmgr = app.Modules.Get('Time series Manager');
     
     # import
-    files = Directory.GetFiles(folderPath, fileExtention)
+    files = Directory.GetFiles(folderPath, fileExtention, SearchOption.AllDirectories)
     group = tmgr.TimeSeriesGroupList.Fetch(targetTimeseriesGroupName)
     if group == None:
         group = tmgr.TimeSeriesGroupList.CreateNew(targetTimeseriesGroupName)
