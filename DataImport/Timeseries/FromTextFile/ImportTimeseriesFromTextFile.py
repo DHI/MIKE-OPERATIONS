@@ -31,6 +31,9 @@ def ImportTimeseriesFromTextFile():
     # import
     files = Directory.GetFiles(folderPath, fileExtention)
     group = tmgr.TimeSeriesGroupList.Fetch(targetTimeseriesGroupName)
+    if group == None:
+        group = tmgr.TimeSeriesGroupList.CreateNew(targetTimeseriesGroupName)
+        tmgr.TimeSeriesGroupList.Add(group)
     for file in files:
             filename = Path.GetFileNameWithoutExtension(file)
             ts = tmgr.TimeSeriesList.Fetch(targetTimeseriesGroupName + "/" + filename)
