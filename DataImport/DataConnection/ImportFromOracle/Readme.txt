@@ -1,0 +1,1 @@
+This script imports timesries from Oracle database
