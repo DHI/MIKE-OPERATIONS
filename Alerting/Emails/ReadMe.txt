@@ -1,1 +1,0 @@
-See origin site: http://dkprojects/99000025/community/Lists/Community%20Discussion/Flat.aspx?RootFolder=%2F99000025%2Fcommunity%2FLists%2FCommunity%20Discussion%2FScript%20for%20emailing%20%28client%20smpt%20server%20or%20gmail%29&FolderCTID=0x01200200C2D93B6CA4376E46B528ED3A60ED37FC
