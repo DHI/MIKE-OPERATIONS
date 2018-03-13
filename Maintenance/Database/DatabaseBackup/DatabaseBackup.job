@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Target" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+    <!--LastUsedJobHost job://localhost-->
+    <Import Project="$(DSSBIN)\DHI.Solutions.JobManager.Tasks.Targets" />
+    <PropertyGroup>
+        <TempDir>d:\temp\backup</TempDir>
+    </PropertyGroup>
+    <ItemGroup></ItemGroup>
+    <Target Name="Target">
+        <RunScript DisplayName="RunScript- tempDir path" Script="/Maintenance/TempDirPath">
+            <Output TaskParameter="Result" PropertyName="TempDir" />
+        </RunScript>
+        <MakeDir DisplayName="MakeDir" Directories="$(TempDir)" />
+        <ExportDocument DisplayName="ExportDocument" Document="/Maintenance/Database/Backup/backup.bat" Target="$(TempDir)\backup.bat" />
+        <Exec Command="backup.bat" WorkingDirectory="$(TempDir)" />
+        <RemoveDir Directories="$(TempDir)" />
+    </Target>
+</Project>

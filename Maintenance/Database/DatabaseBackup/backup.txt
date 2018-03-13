@@ -1,0 +1,36 @@
+@echo off
+set backupfolder=F:\ODSS\Backup
+set psql=C:\Program Files\PostgreSQL\9.6\bin\pg_dump.exe
+set db=odssMalawi
+SET PGPASSWORD=9444Rhot
+
+cd %backupfolder%
+echo %date%
+for /f "tokens=1-4 delims=/- " %%i in ("%date%") do (
+     if "%%l" NEQ "" (
+         set day=%%k
+         set month=%%j
+         set year=%%l
+     ) ELSE (
+         set day=%%i
+         set month=%%j
+         set year=%%k
+     )
+)
+set datestr=%year%_%month%_%day%
+echo datestr is %datestr% > backup.log
+
+rem forfiles -p "%backupfolder%" -s -m *.backup /D -7 /C "cmd /c del @path >>backup.log"
+forfiles /p "%backupfolder%" /s /m *.backup /d -7 /c "cmd /c del @path" 2>&1 |  findstr /V /O /C:"ERROR: No files found with the specified search criteria." 2>&1 | findstr ERROR && ECHO found error||ver > nul
+ver > nul
+
+set BACKUP_FILE=%backupfolder%\%db%_pgAdmin_%datestr%.backup
+echo on
+
+@echo backup file name is %BACKUP_FILE% >>backup.log
+"%psql%" -h localhost -p 5432 -U postgres -F c -b -v -f %BACKUP_FILE% %db%  2>&1 1>>backup.log
+
+@echo finished %date% %time% >>backup.log
+
+@type backup.log
+
