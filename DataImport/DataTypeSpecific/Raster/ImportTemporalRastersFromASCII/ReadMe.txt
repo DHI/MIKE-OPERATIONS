@@ -1,1 +1,0 @@
-Import temporal rasters from ASCII files.
