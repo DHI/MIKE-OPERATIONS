@@ -1,0 +1,1 @@
+This script run several MIKE ZERO post processing tools (DataStatisticsFM, DataExtractionFM, DataVerticalAveragingFM as weel as plot composer)
