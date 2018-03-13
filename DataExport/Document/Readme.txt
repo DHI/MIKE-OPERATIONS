@@ -1,0 +1,1 @@
+This simple script exports documents to a local folder
