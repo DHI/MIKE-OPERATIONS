@@ -1,0 +1,1 @@
+ManageInitialConditions deleted initial conditions for a model setup from the database based upon an age criteria.
