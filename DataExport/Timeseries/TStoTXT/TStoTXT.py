@@ -145,7 +145,7 @@ def Get_TStoExport(exportSpreadsheetPath, startExportDate, endExportDate):
         firstTimeStep = startExportDate;
         lastTimeStep = endExportDate;
         
-         if count <2:
+        if count <2:
             WriteExportTs(ts, outputPath, stationId, type, timeOfSimulationRun,firstTimeStep, lastTimeStep);
             count += 1;
             
