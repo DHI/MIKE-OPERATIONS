@@ -1,4 +1,4 @@
-
+from System.IO import * 
 def ExportDocument(docPath, directory):
     """
     <Script>
