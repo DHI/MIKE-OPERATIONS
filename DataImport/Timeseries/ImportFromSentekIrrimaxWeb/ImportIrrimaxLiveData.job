@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Run Import Script" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+    <Import Project="$(DSSBIN)\DHI.Solutions.JobManager.Tasks.Targets" />
+    <PropertyGroup></PropertyGroup>
+    <ItemGroup>
+    </ItemGroup>
+    <Target Name="Run Import Script">
+        <RunScript Script="/DataImport/Timeseries/ImportFromSentekIrrimaxWeb/ImportFromSentekIrrimaxWeb" P1="/DataImport/Timeseries/ImportFromSentekIrrimaxWeb/Configuration" />
+    </Target>
+</Project>
