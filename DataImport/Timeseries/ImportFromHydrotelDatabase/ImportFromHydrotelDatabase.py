@@ -135,7 +135,7 @@ def GetRangeContent(worksheet, range, ignoreEmptyCells = False, getValueCallback
     
 def GetObservedTimeseries(dictObsSensors, startDate, endDate, outputPath, log):
     try:
-		key = 0
+        key = 0
         connection = SqlClient.SqlConnection(strObservedDB)
         connection.Open()
             
@@ -172,21 +172,21 @@ def GetObservedTimeseries(dictObsSensors, startDate, endDate, outputPath, log):
                 
         connection.Close()
     except:
-	if key == 0:
-		exceptionMessage = "Failed to connect to database. Connecton string: " + strObservedDB + "\n"
-	else:
-		exceptionMessage = "Data import failed for sensor id: " + str(int(key)) + " " + value + "!!!!\n"
-	
-	log.write(exceptionMessage)
-	raise
+        if key == 0:
+            exceptionMessage = "Failed to connect to database. Connecton string: " + strObservedDB + "\n"
+        else:
+            exceptionMessage = "Data import failed for sensor id: " + str(int(key)) + " " + value + "!!!!\n"
+        
+        log.write(exceptionMessage)
+        raise
         
         
 def GetForecastTimeseries(dictForeSensors, startDate, endDate, outputPath, log):
     try:
-		key = 0
+        key = 0
         connection = SqlClient.SqlConnection(strObservedDB)
         connection.Open()
-            
+        
         for key, value in dictForeSensors.iteritems():
             strSQL = 'SELECT SAMPLES.DT, SAMPLES.SAMPLEVALUE, SAMPLES.POINT '
             strSQL = strSQL + '  FROM HydroTel.dbo.SAMPLES SAMPLES '
@@ -205,11 +205,9 @@ def GetForecastTimeseries(dictForeSensors, startDate, endDate, outputPath, log):
                     strData.Append('-1E-30\n')
                 else:
                     strData.Append(str(theValue) + '\n')
-
             reader.Close()
-
+            
             if strData.Length > 0:
-                # Write to file
                 f = open(outputPath + "\\Forecast\\" + value + ".txt", 'w')
                 f.write("Time," + value + "\n")
                 f.write(strData.ToString())
@@ -219,11 +217,11 @@ def GetForecastTimeseries(dictForeSensors, startDate, endDate, outputPath, log):
                 log.write("No data for sensor id: " + str(int(key)) + " " + value + "!!!!\n")
                 
         connection.Close()
-	except:
-	if key == 0:
-		exceptionMessage = "Failed to connect to database. Connecton string: " + strObservedDB + "\n"
-	else:
-		exceptionMessage = "Data import failed for sensor id: " + str(int(key)) + " " + value + "!!!!\n"
-	
-	log.write(exceptionMessage)
-	raise
+    except:
+        if key == 0:
+            exceptionMessage = "Failed to connect to database. Connecton string: " + strObservedDB + "\n"
+        else:
+            exceptionMessage = "Data import failed for sensor id: " + str(int(key)) + " " + value + "!!!!\n"
+        
+        log.write(exceptionMessage)
+        raise
