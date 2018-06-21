@@ -370,11 +370,11 @@ def ImportFromSentekIrrimaxWeb(spreadsheetpath):
                         words = line.split(',')
     
                         # parse string to DateTime (via datetime)
-                        dt = datetime.datetime.strptime(words[column], "%Y/%m/%d %H:%M:%S") 
+                        dt = datetime.datetime.strptime(words[0], "%Y/%m/%d %H:%M:%S") 
                         DT = DateTime(dt.year, dt.month, dt.day, dt.hour, dt.minute, dt.second)
     
                         # parse string to float
-                        ts.append((DT, float(words[1])))
+                        ts.append((DT, float(words[column])))
                     
                     if len(ts) == 0:
                         print("\t\t\t\tNo new measurements found.")
