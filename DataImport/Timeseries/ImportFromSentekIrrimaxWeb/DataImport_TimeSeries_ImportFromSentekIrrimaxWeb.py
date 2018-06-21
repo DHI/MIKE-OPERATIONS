@@ -321,7 +321,7 @@ def ImportFromSentekIrrimaxWeb(spreadsheetpath):
                         sensor_variable = "Volumetric Water Content"
                         sensor_comment = "{} cm".format(sensor.attrib["depth_cm"])
                         if sensor.attrib["unit"] == "mm":
-                            sensor_unit = "()"
+                            sensor_unit = "%"
     
                     if sensor.attrib["type"] == "V.I.C.":
                         sensor_variable = "Undefined"
@@ -370,7 +370,7 @@ def ImportFromSentekIrrimaxWeb(spreadsheetpath):
                         words = line.split(',')
     
                         # parse string to DateTime (via datetime)
-                        dt = datetime.datetime.strptime(words[0], "%Y/%m/%d %H:%M:%S") 
+                        dt = datetime.datetime.strptime(words[column], "%Y/%m/%d %H:%M:%S") 
                         DT = DateTime(dt.year, dt.month, dt.day, dt.hour, dt.minute, dt.second)
     
                         # parse string to float
