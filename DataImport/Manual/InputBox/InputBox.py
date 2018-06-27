@@ -9,11 +9,11 @@ value = 1
 tb = TextBox()
 f = Form()
 
-def TestWebPub():
+def ShowInputBox():
     """
     <Script>
-    <Author>admin</Author>
-    <Description>Please enter script description here</Description>
+    <Author>AUG</Author>
+    <Description>This script will open an input box for the user to define an integer</Description>
     </Script>
     """
     
@@ -43,11 +43,11 @@ def OnKeyPress(sender, args):
     f.Close()
     
 
-def TSCalculator_Factor(factor):
+def ReceivingScript(factor):
     """
     <Script>
-    <Author>admin</Author>
-    <Description>Please enter script description here</Description>
+    <Author>AUG</Author>
+    <Description>This script receives the content of the textbox</Description>
     <Parameters>
     <Parameter name="factor" type="int">Parameter of type int</Parameter>
     </Parameters>
