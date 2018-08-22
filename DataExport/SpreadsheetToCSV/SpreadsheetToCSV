@@ -6,7 +6,7 @@ def Gregory():
     """
     <Script>
     <Author>AUG</Author>
-    <Description>This script exports a spreadsheet to csv</Description>
+    <Description>This script exports the active worksheet of a spreadsheet to csv</Description>
     </Script>
     """
     ssMgr = app.Modules.Get('Spreadsheet Manager')
