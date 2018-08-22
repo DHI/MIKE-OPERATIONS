@@ -2,7 +2,7 @@ import clr
 clr.AddReference('SpreadsheetGear2017.Core')
 from SpreadsheetGear import *
 
-def Gregory():
+def SpreadsheetToCSV():
     """
     <Script>
     <Author>AUG</Author>
