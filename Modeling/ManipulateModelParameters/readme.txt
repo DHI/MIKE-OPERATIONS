@@ -7,10 +7,13 @@ To test this yourseld, you should:
 - run the model
 - register the model with MIKE HYDRO BASIN adaptor
 - Open the model, go to ReservoirNote, right click on "R5 (Reservoir1)" and select "include all parameters"
+- Run the scenarion and update variable 'simulation' with correct simulation path
 
+ListModelObject shows how the Get* functions work and will iterate over all model objects in model setup, scenario or simulation and display the properties and values. 
 
-Script TestListModelObject shows how the Get* functions work and will iterate over all model objects in model setup, scenario or simulation and display the properties and values. 
-It assumes a default naming of group, scenario and simulations as a function of the model setup name.
+UpdateModelObject will edit the parameter called R5 (Reservoir 1)
+
+UpdateCrossSectionObject is usefull for MIKE 11 and MIKE HYDRO River models.
 
 GetObject – it will return an object representing the properties of a model object. If you know the structure of the model object the properties can be manipulated directory.
 
