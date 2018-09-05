@@ -13,10 +13,10 @@ def ListModelObject(t, m):
     <Author>Anders Klinting</Author>
     <Description>Script to list  model objects.</Description>
     <Parameters>
-    <Parameter name="t" type="int">Define what to  consider. 
-    '1' will list all the parameters visible by the model 
-    '2' will list all the parameters used in the scenarion called ""
-    '3' will simulation) </Parameter>
+    <Parameter name="t" type="int">Define what to list: 
+    '1' will list all the parameters visible by the model adaptor 
+    '2' will list all the parameters used in the scenarion called
+    '3' will list all the parameters used in the simulation</Parameter>
     <Parameter name="m" type="string">model name (not the path)</Parameter>
     </Parameters>
     </Script>
@@ -61,15 +61,15 @@ def printMO(mo):
         for kv in dict:
             print '   ' + kv.Key + ' = ' + kv.Value.Value.ToString() + '     (readonly='+kv.Value.ReadOnly.ToString()+')';
             print '-- ' + mo.GetParameterPath(kv.Value)+ ' = ' + mo.GetParameter(kv.Key).Value.ToString();
-            print '** ' + mo.GetParameterPath(kv.Value)+ ' = ' + mo.GetParameterValue(kv.Key).ToString();
-            
-            
+            print '** ' + mo.GetParameterPath(kv.Value)+ ' = ' + mo.GetParameterValue(kv.Key).ToString();          
 
-def TestUpdateModelObject():
+def UpdateModelObject():
     """
     <Script>
     <Author>Anders Klinting</Author>
-    <Description>test to update the model object</Description>
+    <Description>This script illustrates how to update model object. This is based on the M11 model found in
+    C:\Program Files (x86)\DHI\2017\MIKE Zero\Examples\MIKE_11\Demo
+    </Description>
     </Script>
     """
 
