@@ -7,7 +7,10 @@ from System.Reflection import BindingFlags
 clr.AddReference('System.Core')
 from System.Linq import Enumerable
 
-def ListModelObject(t, m):
+modelName = "Demo"
+simulation = '/Group of Demo/Demo/Scenario of Demo/Simulation of Scenario of Demo at 2018-09-05 16:39:46' 
+       
+def ListModelObject(t):
     """
     <Script>
     <Author>Anders Klinting</Author>
@@ -17,15 +20,17 @@ def ListModelObject(t, m):
     '1' will list all the parameters visible by the model adaptor 
     '2' will list all the parameters used in the scenarion called
     '3' will list all the parameters used in the simulation</Parameter>
-    <Parameter name="m" type="string">model name (not the path)</Parameter>
     </Parameters>
     </Script>
     """
+
+    scenario = '/Group of ' + modelName + '/' + modelName + '/Scenario of ' + modelName
+    
     # get the manager
     scm = app.Modules.Get('Scenario Manager');
 
     # get the model setup
-    modelsetup = scm.ModelSetupList.Fetch('/Group of ' + m+ '/' + m);
+    modelsetup = scm.ModelSetupList.Fetch('/Group of ' + modelName+ '/' + modelName);
     # fill details of it - performs queries on all lists
     scm.ModelSetupList.Fill(modelsetup);
     
@@ -36,75 +41,84 @@ def ListModelObject(t, m):
     
     if (t==2):
         # getthe sccenario
-        sc = scm.ScenarioList.Fetch('/Group of ' + m + '/' + m + '/Scenario of ' + m);
+        sc = scm.ScenarioList.Fetch(scenario);
         scm.ScenarioList.Fill(sc);
         for mo in sc.ScenarioModelObjectList.GetAll():
             printMO(mo);
 
     if (t==3):
         # getthe sccenario
-        sc = scm.ScenarioList.Fetch('/Group of ' + m + '/' + m + '/Scenario of ' + m);
+        sc = scm.ScenarioList.Fetch(scenario);
         scm.ScenarioList.Fill(sc);
         # get the simulation
-        sim = scm.SimulationList.Fetch('/Group of ' + m + '/' + m + '/Scenario of ' + m  + '/Simulation of Scenario of ' + m);
+        
+        sim = scm.SimulationList.Fetch(simulation);
         scm.SimulationList.Fill(sim);
         for mo in sim.SimulationModelObjectList.GetAll():
             printMO(mo);
-
-
-def printMO(mo):
-    pmo = mo.GetObject();
-    if (pmo!=None):
-        # we have model object
-        print "\n%s - %s" %(mo.Name, pmo.GetType().ToString());
-        dict = mo.GetPathsAndParameters();
-        for kv in dict:
-            print '   ' + kv.Key + ' = ' + kv.Value.Value.ToString() + '     (readonly='+kv.Value.ReadOnly.ToString()+')';
-            print '-- ' + mo.GetParameterPath(kv.Value)+ ' = ' + mo.GetParameter(kv.Key).Value.ToString();
-            print '** ' + mo.GetParameterPath(kv.Value)+ ' = ' + mo.GetParameterValue(kv.Key).ToString();          
-
+     
 def UpdateModelObject():
     """
     <Script>
     <Author>Anders Klinting</Author>
-    <Description>This script illustrates how to update model object. This is based on the M11 model found in
-    C:\Program Files (x86)\DHI\2017\MIKE Zero\Examples\MIKE_11\Demo
-    </Description>
+    <Description>test to update the model object</Description>
     </Script>
     """
-
+    
+    scenario = '/Group of ' + modelName + '/' + modelName + '/Scenario of ' + modelName
+    
     # get the manager
     scm = app.Modules.Get('Scenario Manager');
-
+    
     # get the scenario
-    sc = scm.ScenarioList.Fetch('/Group of m11/m11/Scenario of m11')
+    sc = scm.ScenarioList.Fetch(scenario)
     scm.ScenarioList.Fill(sc);
 
     # find a model object
     molist = sc.ScenarioModelObjectList.GetAll();
     for mo in molist:
-        if (mo.Name == 'CALI - 4402,5 - QPoint'):
+        if (mo.Name == 'R5 (Reservoir 1)'):
             # try to set the Name - this should not reflect back in the database
             # it appears to go, but the XML is not changed.... as expected because
             # the Name property is readonly.
             pmo = mo.GetObject();
             try:
-                # get the paramter
-                parampath = '.Name';
+                # Edit InitialWaterLevel paramter
+                parampath = '.InitialWaterLevel';
                 param = mo.GetParameter(parampath);
-    
-                # give it a new value
-                param.Value = '123';
-                # put it back in the object
-                mo.SetParameter(param, parampath);
-                # change the value directly
-                mo.SetParameterValue('yyy', parampath);
+                param.Value = param.Value + 2;
+                mo.SetParameter(param, parampath); # put it back in the object
+                
+                # get the paramter
+                parampath = '.SedimentDistributionType';
+                mo.SetParameterValue('Type2_FloodPlainFoothill', parampath); # change the value directly
     
                 # update back to the database
-                # sc.ScenarioModelObjectList.Update(mo);
+                sc.ScenarioModelObjectList.Update(mo);
             except Exception as e:
                 print e;
+    pass;    
 
+def UpdateCrossSectionObject():
+    """
+    <Script>
+    <Author>Anders Klinting</Author>
+    <Description>test to update the model object</Description>
+    </Script>
+    """
+    
+    scenario = '/Group of ' + modelName + '/' + modelName + '/Scenario of ' + modelName
+    
+    # get the manager
+    scm = app.Modules.Get('Scenario Manager');
+    
+    # get the scenario
+    sc = scm.ScenarioList.Fetch(scenario)
+    scm.ScenarioList.Fill(sc);
+
+    # find a model object
+    molist = sc.ScenarioModelObjectList.GetAll();
+    for mo in molist:
         if (mo.Name == 'CALI - 4402,5 - QPoint'):
             # try to update the CrossSections
             pmo = mo.GetObject();
@@ -135,30 +149,14 @@ def UpdateModelObject():
 
     pass;    
     
-def Test2(t, m):
-    """
-    <Script>
-    <Author>Anders Klinting</Author>
-    <Description>Script to test model objects</Description>
-    <Parameters>
-    <Parameter name="t" type="int">test 1=model, 2=scenario, 3=simulation</Parameter>
-    <Parameter name="m" type="string">model name - m11 / mb</Parameter>
-    </Parameters>
-    </Script>
-    """
-    # get the manager
-    scm = app.Modules.Get('Scenario Manager');
-
-    # get the model setup
-    modelsetup = scm.ModelSetupList.Fetch('/Group of ' + m+ '/' + m);
-    # fill details of it - performs queries on all lists
-    scm.ModelSetupList.Fill(modelsetup);
-    print 'has scenarios = ' + modelsetup.HasScenario.ToString();
-    # getthe sccenario
-    sc = scm.ScenarioList.Fetch('/Group of ' + m + '/' + m + '/Scenario of ' + m);
-    scm.ScenarioList.Fill(sc);
-    print 'has simulations = ' + sc.HasSimulations.ToString();
-    # get the simulation
-    sim = scm.SimulationList.Fetch('/Group of ' + m + '/' + m + '/Scenario of ' + m  + '/Simulation of Scenario of ' + m);
-    scm.SimulationList.Fill(sim);
+def printMO(mo):
+    pmo = mo.GetObject();
+    if (pmo!=None):
+        # we have model object
+        print "\n%s - %s" %(mo.Name, pmo.GetType().ToString());
+        dict = mo.GetPathsAndParameters();
+        for kv in dict:
+            print '   ' + kv.Key + ' = ' + kv.Value.Value.ToString() + '     (readonly='+kv.Value.ReadOnly.ToString()+')';
+            print '-- ' + mo.GetParameterPath(kv.Value)+ ' = ' + mo.GetParameter(kv.Key).Value.ToString();
+            print '** ' + mo.GetParameterPath(kv.Value)+ ' = ' + mo.GetParameterValue(kv.Key).ToString();
     
