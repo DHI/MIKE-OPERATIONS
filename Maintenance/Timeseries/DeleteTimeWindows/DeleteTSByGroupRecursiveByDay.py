@@ -54,7 +54,7 @@ def _DeleteTSByGroupByDate(groupPath, date):
     _log(groupPath)
     for ts in tsList:
             _log("Delete time steps from " + ts.Name + " older than " + date.ToString())
-            ts.Delete(DateTime.MinValue, True, date, True)
+            ts.Delete(DateTime.MinValue.AddDays(7), True, date, True)
        
     pass;
 
