@@ -45,3 +45,27 @@ def UpdateSpreadsheet():
     # save the changes
     ssmgr.SaveSpreadsheet(ss);
     pass;
+
+def UpdateSpreadsheet4(value, spreadsheet, tab, cell):
+    """
+    <Script>
+    <Author>admin</Author>
+    <Description>Please enter script description here</Description>
+    <Parameters>
+    <Parameter name="value" type="string">Value to write</Parameter>
+    <Parameter name="spreadsheet" type="string">spreadsheet path</Parameter>
+    <Parameter name="tab" type="string">tab name</Parameter>
+    <Parameter name="cell" type="string">cell name (e.g. 'C3')</Parameter>    
+    </Parameters>
+    </Script>
+    """
+    ssmgr = app.Modules.Get('Spreadsheet Manager');
+    
+    # open an existing spreadsheet
+    ss = ssmgr.OpenSpreadsheet(spreadsheet);
+    
+    # modify cell E5 in the sheet
+    ssmgr.SetCellValue(ss, tab, cell, value);
+    
+    # save the changes
+    ssmgr.SaveSpreadsheet(ss); 
