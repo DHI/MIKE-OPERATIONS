@@ -46,11 +46,11 @@ def UpdateSpreadsheet():
     ssmgr.SaveSpreadsheet(ss);
     pass;
 
-def UpdateSpreadsheet4(value, spreadsheet, tab, cell):
+def UpdateSpreadsheetWithParameters(value, spreadsheet, tab, cell):
     """
     <Script>
     <Author>admin</Author>
-    <Description>Please enter script description here</Description>
+    <Description>This will update the value in a specific cell</Description>
     <Parameters>
     <Parameter name="value" type="string">Value to write</Parameter>
     <Parameter name="spreadsheet" type="string">spreadsheet path</Parameter>
