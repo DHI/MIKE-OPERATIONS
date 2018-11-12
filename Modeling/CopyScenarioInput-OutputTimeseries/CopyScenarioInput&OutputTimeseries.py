@@ -8,8 +8,8 @@ def copyScenarioInOut():
     # write your code here
     # Get a reference to the Scenario Manager
     sceMgr = app.Modules.Get('Scenario Manager')
-	originalScenario = '/Group of Model_Real_Time/MyModel/MyScenario1'
-	destinationScenario = '/Group of Model_Real_Time/MyModel/MyScenario2'
+    originalScenario = '/Group of Model_Real_Time/MyModel/MyScenario1'
+    destinationScenario = '/Group of Model_Real_Time/MyModel/MyScenario2'
 	
     # Use it to  read a Scenario
     sce1 = sceMgr.ScenarioList.Fetch(originalScenario)
