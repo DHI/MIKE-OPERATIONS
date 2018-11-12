@@ -10,7 +10,7 @@ def ChangeLogExample():
     cmgr = app.Modules.Get('ChangeLog Manager');
     tsmgr = app.Modules.Get('Time series Manager');
 
-	path = '/Misc/'
+    path = '/Misc/'
     oldName = 'OldTimeseries';
     newName = 'New name';
     
