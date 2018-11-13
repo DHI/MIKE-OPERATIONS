@@ -29,4 +29,4 @@ def UpdateTOF():
     scenario.SimulationStartDate = SOS
 
     # write changes to the database
-   scmgr.ScenarioList.Update (scenario);
+    scmgr.ScenarioList.Update (scenario);
