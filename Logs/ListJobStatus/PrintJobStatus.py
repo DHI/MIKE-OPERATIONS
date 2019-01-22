@@ -6,8 +6,8 @@ from DHI.Solutions.Generic import *
 def PrintJobStatus():
     """
     <Script>
-    <Author>admin</Author>
-    <Description>Please enter script description here</Description>
+    <Author>jalu</Author>
+    <Description>This script prints a list of all running job instances</Description>
     </Script>
     """
     # write your code here
