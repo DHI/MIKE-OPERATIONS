@@ -14,6 +14,15 @@ worker = None
 #------------------ progress dialog ------------
 
 class ProgressBarDialog(Form):
+    """
+    <Script>
+    <Author>ANK</Author>
+    <Description>Progress Bar Dialog for showing progress when running time consuming tasks.</Description>
+    <Parameters>
+    <Parameter name="From" type="System.Windows.Forms.Form">Form to add the progress bar to.</Parameter>
+    </Parameters>
+    </Script>
+    """
 
     def _BackgroundWorker_ProgressChanged(self, sender, e):
         self.pb.Value = e.ProgressPercentage
