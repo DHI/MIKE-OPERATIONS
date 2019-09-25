@@ -17,7 +17,7 @@ def ProgressBarDialog(Form):
     <Author>admin</Author>
     <Description>Progress Bar Dialog for showing progress when running time consuming tasks.</Description>
     <Parameters>
-    <Parameter name="From" type="System.Windows.Forms.Form">Form to add the progress bar to.</Parameter>
+    <Parameter name="Form" type="System.Windows.Forms.Form">Form to add the progress bar to.</Parameter>
     </Parameters>
     </Script>
     """
