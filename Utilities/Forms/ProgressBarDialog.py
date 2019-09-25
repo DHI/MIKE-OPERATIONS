@@ -11,12 +11,10 @@ from System.ComponentModel import BackgroundWorker
 
 worker = None
 
-#------------------ progress dialog ------------
-
-class ProgressBarDialog(Form):
+def ProgressBarDialog(Form):
     """
     <Script>
-    <Author>ANK</Author>
+    <Author>admin</Author>
     <Description>Progress Bar Dialog for showing progress when running time consuming tasks.</Description>
     <Parameters>
     <Parameter name="From" type="System.Windows.Forms.Form">Form to add the progress bar to.</Parameter>
