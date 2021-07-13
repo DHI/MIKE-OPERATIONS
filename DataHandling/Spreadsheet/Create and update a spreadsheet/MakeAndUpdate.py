@@ -24,6 +24,7 @@ def MakeSpreadsheet():
     
     # insert the sheet into the database in the root
     ssmgr.SpreadsheetList.Add(wb);
+    ssmgr.SaveSpreadsheet(ss)
     pass;
     
 def UpdateSpreadsheet():
