@@ -91,7 +91,7 @@ def CreateInputTimeSeriesSpreadsheet(modelSetupPath, scenarioName, spreadsheetNa
         rowDict.Add(rowKey, rowNo)
         
         # Set row values for the input time series.
-        spreadsheetModule.SetCellValue(spreadsheet, 'Sheet1', rowNo, 0, True)
+        spreadsheetModule.SetCellValue(spreadsheet, 'Sheet1', rowNo, 0, False)
         spreadsheetModule.SetCellValue(spreadsheet, 'Sheet1', rowNo, 1, modelObjectName)
         spreadsheetModule.SetCellValue(spreadsheet, 'Sheet1', rowNo, 2, inputTsName)
 
@@ -115,6 +115,7 @@ def CreateInputTimeSeriesSpreadsheet(modelSetupPath, scenarioName, spreadsheetNa
                     ts = timeSeriesModule.TimeSeriesList.Fetch(inputTs.TimeseriesId)
                     tsPath = timeSeriesModule.TimeSeriesList.GetEntityDescriptor(ts)
                     rowNo = rowDict[rowKey]
+                    spreadsheetModule.SetCellValue(spreadsheet, 'Sheet1', rowNo, 0, True)
                     spreadsheetModule.SetCellValue(spreadsheet, 'Sheet1', rowNo, 3, tsPath)
                 else:
                     raise System.ArgumentException('Spreadsheet does not model obejct in input ts ' + rowKey)
