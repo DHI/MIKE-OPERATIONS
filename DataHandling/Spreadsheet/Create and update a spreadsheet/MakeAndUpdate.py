@@ -1,3 +1,8 @@
+import clr
+clr.AddReference('DHI.Solutions.Generic')
+import DHI.Solutions.Generic
+import System
+
 def MakeSpreadsheet():
     """
     <Script>
