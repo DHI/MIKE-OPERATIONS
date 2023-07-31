@@ -70,3 +70,19 @@ def UpdateSpreadsheetWithParameters(value, spreadsheet, tab, cell):
     
     # save the changes
     ssmgr.SaveSpreadsheet(ss); 
+
+def WriteFile():
+    """
+    <Script>
+    <Author>admin</Author>
+    <Description>Writes a file in the temp directory.</Description>
+    </Script>
+    """
+
+    tempPath = DHI.Solutions.Generic.DssPath.GetTemporaryDirectory()
+    tempFile = System.IO.Path.Combine(tempPath, "dhitest.txt")
+
+    if (System.IO.File.Exists(tempFile)):
+        System.IO.File.Delete(tempFile)
+    
+    System.IO.File.WriteAllText(tempFile, "test text")
