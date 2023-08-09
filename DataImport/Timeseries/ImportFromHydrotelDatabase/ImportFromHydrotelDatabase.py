@@ -28,9 +28,9 @@ def ImportTelemetryData(timeOfForecast, hindcast, forecast, spreadsheetPath, wor
     </Script>
     """
     
-    print "Time of forecast: " + timeOfForecast
-    print "Hindcast: " + str(hindcast)
-    print "Forecast: " + str(forecast)
+    print("Time of forecast: " + timeOfForecast)
+    print("Hindcast: " + str(hindcast))
+    print("Forecast: " + str(forecast))
     tof = None;
     
     if timeOfForecast.upper() == "NOW":
@@ -120,7 +120,7 @@ def GetRangeContent(worksheet, range, ignoreEmptyCells = False, getValueCallback
 
         rowContent = []
         for cell in row.Cells:
-            if getValueCallback <> None:
+            if getValueCallback != None:
                 cellValue = getValueCallback(cell)
             else:
                 cellValue = cell.Value
