@@ -31,16 +31,16 @@ def ImportTS(spreadSheetPath, forecastTime, hindcastPeriod, forecastPeriod):
     
      #Convert dates from String format to DateTime format
     forecastTime = DateTime.ParseExact(forecastTime, 'MM/dd/yyyy HH:mm:ss', System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None)
-    print "TOF" , forecastTime 
+    print("TOF" , forecastTime)
 
     try:
         timeShift = 4
         forecastTimeUtc = forecastTime.AddHours(timeShift)
         hindcastTime = forecastTime.AddHours(-hindcastPeriod)
         forecastEndTime = forecastTime.AddHours(forecastPeriod)
-        print "TOF" , forecastTime 
-        print forecastEndTime
-        print hindcastTime 
+        print("TOF" , forecastTime)
+        print( forecastEndTime)
+        print(hindcastTime)
         
         logString = logString + "\nTime of forecast: {0} UTC: {1}.".format(forecastTime,forecastTimeUtc)
         logString = logString + "\nFrom time: {0}. Hindcast period: {1} hours.".format(hindcastTime,hindcastPeriod)
@@ -146,7 +146,7 @@ def ImportTS(spreadSheetPath, forecastTime, hindcastPeriod, forecastPeriod):
 #                        rowDate = ws.Cells[r, dateCol].Value   
                         A = int(r - 1)
                         B = int(dateCol - 1)
-                        print A, B
+                        print(A, B)
                         rowDate = ws.Cells[A,B].Value
                         if (rowDate == None):
                             break
@@ -192,7 +192,7 @@ def ImportTS(spreadSheetPath, forecastTime, hindcastPeriod, forecastPeriod):
 #        excel.Quit()
 
     # log
-    print logString
+    print(logString)
     if success is False:
         raise NameError(logString) 
 
