@@ -48,4 +48,4 @@ def UpdateThresholdCache(simulationPath):
     _log("...done.")
 
 def _log(msg):
-    print "%s - %s" %(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), msg);
+    print("%s - %s" %(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), msg));
