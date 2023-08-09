@@ -29,7 +29,7 @@ def TestStorageTypeChange(newStorageType):
     # Read the time series
     for ts in tsMgr.TimeSeriesList.FetchAll():
         tsPath = tsMgr.TimeSeriesList.GetEntityDescriptor(ts)
-        print ts.Id, tsPath, ts.StorageType
+        print(ts.Id, tsPath, ts.StorageType)
         
         if ts.StorageType != newStorageType:
             tsId = ts.Id
@@ -51,6 +51,6 @@ def TestStorageTypeChange(newStorageType):
         
             # get it again to check
             ts = tsMgr.TimeSeriesList.Fetch(tsPath)
-            print ts.Id, ts.StorageType    
+            print(ts.Id, ts.StorageType)
         else:
-            print "is already " + str(newStorageType)
+            print("is already " + str(newStorageType))
