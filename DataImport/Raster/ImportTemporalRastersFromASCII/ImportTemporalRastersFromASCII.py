@@ -75,7 +75,7 @@ def ImportAsciiRaster(folder,gisgroup):
     existingRaster = gisManager.RasterList.Fetch(gisgrouppath)
 
  
-    if (existingRaster <> None):
+    if (existingRaster != None):
 
         gisManager.RasterList.Delete(existingRaster)
         
