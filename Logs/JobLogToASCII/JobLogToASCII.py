@@ -14,7 +14,7 @@ def GetJobInstanceLog():
 
     # get id of the current instance    
     id = JobContext.Instance.JobInstanceID
-    print id.ToString()
+    print(id.ToString())
    
 
     # get the currently logged data from the database
