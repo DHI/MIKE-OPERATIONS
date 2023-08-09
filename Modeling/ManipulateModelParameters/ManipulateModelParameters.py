@@ -96,7 +96,7 @@ def UpdateModelObject():
                 # update back to the database
                 sc.ScenarioModelObjectList.Update(mo);
             except Exception as e:
-                print e;
+                print(e);
     pass;    
 
 def UpdateCrossSectionObject():
@@ -144,7 +144,7 @@ def UpdateCrossSectionObject():
                     # update back to the database
                     # sc.ScenarioModelObjectList.Update(mo);
                 except Exception as e:
-                    print e;
+                    print(e);
             pass;
 
     pass;    
@@ -153,10 +153,10 @@ def printMO(mo):
     pmo = mo.GetObject();
     if (pmo!=None):
         # we have model object
-        print "\n%s - %s" %(mo.Name, pmo.GetType().ToString());
+        print("\n%s - %s" %(mo.Name, pmo.GetType().ToString()));
         dict = mo.GetPathsAndParameters();
         for kv in dict:
-            print '   ' + kv.Key + ' = ' + kv.Value.Value.ToString() + '     (readonly='+kv.Value.ReadOnly.ToString()+')';
-            print '-- ' + mo.GetParameterPath(kv.Value)+ ' = ' + mo.GetParameter(kv.Key).Value.ToString();
-            print '** ' + mo.GetParameterPath(kv.Value)+ ' = ' + mo.GetParameterValue(kv.Key).ToString();
+            print('   ' + kv.Key + ' = ' + kv.Value.Value.ToString() + '     (readonly='+kv.Value.ReadOnly.ToString()+')');
+            print('-- ' + mo.GetParameterPath(kv.Value)+ ' = ' + mo.GetParameter(kv.Key).Value.ToString());
+            print('** ' + mo.GetParameterPath(kv.Value)+ ' = ' + mo.GetParameterValue(kv.Key).ToString());
     
