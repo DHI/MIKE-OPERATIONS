@@ -53,4 +53,4 @@ def ReceivingScript(factor):
     </Parameters>
     </Script>
     """
-    print factor
+    print(factor)
