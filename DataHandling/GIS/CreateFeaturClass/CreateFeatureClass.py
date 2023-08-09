@@ -48,7 +48,7 @@ def CreateFeatureClass():
         geometry = "POINT[ 1 1]";
         feature.Geometry.FromWKT(geometry);
         n= geoType.ToString() + " " + str(i);
-        #print n
+        #print(n)
         feature["name"] = n;
         feature["modelobjectname"] = n;
         featureClass.Add(feature);
@@ -58,4 +58,4 @@ def CreateFeatureClass():
         
     _gisModule.FeatureClassList.Add(featureClass);        
     
-    print i
+    print(i)
