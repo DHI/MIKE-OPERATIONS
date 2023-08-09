@@ -18,7 +18,7 @@ spreadsheetMgr = app.Modules.Get('Spreadsheet Manager')
 debug = False
 
 def _logprint(m):
-    print DateTime.Now.ToString("HH:mm:ss") + " - ", m;
+    print(DateTime.Now.ToString("HH:mm:ss") + " - ", m);
 
 def DownloadYr(spreadsheetPath, worksheetName,hours):
     """
