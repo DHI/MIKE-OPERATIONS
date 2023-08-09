@@ -22,7 +22,7 @@ def DeleteTSByGroupRecursiveByDay(groupPath, nDay):
         
         # Delete time steps in TS in groupPath recursively
         _DeleteTSByGroupRecursiveByDate(groupPath, date)
-    except Exception, e:
+    except Exception as e:
         _log("ERROR: %s" %(str(e)));
     pass;
 
