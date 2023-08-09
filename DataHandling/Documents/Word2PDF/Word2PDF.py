@@ -14,5 +14,5 @@ def ConvertWordToPDF(wordDocFullPath):
     </Script>
     """
     pdfFullPath = WordToPDFConvert().Convert(wordDocFullPath)
-    print pdfFullPath
+    print(pdfFullPath)
     return pdfFullPath
