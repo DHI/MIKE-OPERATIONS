@@ -75,7 +75,7 @@ def TimeseriesExportTool(inputItems, exportFormat, exportDirectory, exportMetada
         for inputItem in inputItems:
             tool.InputItems.Add(inputItem)
     else:
-        if inputItems <> None:
+        if inputItems != None:
             tool.InputItems.Add(inputItems)
     tool.ExportFormat = exportFormat
     tool.ExportDirectory = exportDirectory
