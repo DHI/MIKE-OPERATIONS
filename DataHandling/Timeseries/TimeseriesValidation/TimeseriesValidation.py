@@ -103,7 +103,7 @@ def ExecuteValidation(validationSpreadsheetPath, tOF, hindcast, forecast, logFil
                     if (outputTimeSeries != None and outputTimeSeries.Count > 0):
                         ts = outputTimeSeries[0];
 
-                except Exception, e:
+                except Exception as e:
                     message = 'Execute Replace Value Tool: ' + e.ToString();
                     WriteError(message);
          
@@ -126,7 +126,7 @@ def ExecuteValidation(validationSpreadsheetPath, tOF, hindcast, forecast, logFil
                 
                     if (outputTimeSeries != None and outputTimeSeries.Count > 0):
                         ts = outputTimeSeries[0];
-                except Exception, e:
+                except Exception as e:
                     message = 'Execute Replace Value Tool: ' + e.ToString();
                     WriteError(message);
                 
@@ -148,7 +148,7 @@ def ExecuteValidation(validationSpreadsheetPath, tOF, hindcast, forecast, logFil
                 
                     if (outputTimeSeries != None and outputTimeSeries.Count > 0):
                         ts = outputTimeSeries[0];
-                except Exception, e:
+                except Exception as e:
                     message = 'Execute Replace Value Tool: ' + e.ToString();
                     WriteError(message);
                         
@@ -171,7 +171,7 @@ def ExecuteValidation(validationSpreadsheetPath, tOF, hindcast, forecast, logFil
                     if (outputTimeSeries != None and outputTimeSeries.Count > 0):
                         ts = outputTimeSeries[0];
 
-                except Exception, e:
+                except Exception as e:
                     message = 'Execute Replace Value Tool: ' + e.ToString();
                     WriteError(message);
                     
@@ -189,7 +189,7 @@ def ExecuteValidation(validationSpreadsheetPath, tOF, hindcast, forecast, logFil
                 
                     if (outputTimeSeries != None and outputTimeSeries.Count > 0):
                         ts = outputTimeSeries[0];
-                except Exception, e:
+                except Exception as e:
                     message = 'Execute Replace Value Tool: ' + e.ToString();
                     WriteError(message);
             WriteTimeSeries(validationInfo.TsOutputPath, ts);
