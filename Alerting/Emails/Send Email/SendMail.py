@@ -12,7 +12,7 @@ def customCertValidation(s, certificate, chain, sslPolicyErrors):
     return True;
     
 def _SendMail(emails, msgsubj, msghtml, filename = ""):
-    print "_SendMail " + emails
+    print("_SendMail " + emails)
     
     mail_user = r'andersklinting@gmail.com'
     mail_pwd = r'password'    
@@ -41,7 +41,7 @@ def _SendMail(emails, msgsubj, msghtml, filename = ""):
         
         client.Send(message);
     except Exception as e:
-        print str(e)
+        print(str(e))
 
 
 def _GetDoc(docPath):
@@ -68,4 +68,4 @@ def TestEmailDocument():
 
     filename = _GetDoc("/AUG/EUR_MIKEPoweredByDHI_Pricelist_Corporate_Rel2017_21June2017.pdf")
     _SendMail("ank@dhigroup.com", "test send doc subject", "this is a test body, <b>HTML tags</b> are possible", filename)
-    print "done"
+    print("done")
