@@ -72,7 +72,7 @@ def ExportTsGroup2Csv(tsGroupPath, csvDestinationDirectory, realtimeConfiguratio
                     stationName = fl.Name;
                     break;
     
-        if (stationId <> None):
+        if (stationId != None):
             ExportTs2Csv(ts, csvDestinationDirectory, stationId, stationName, simulationDateTime);
     
     return;
@@ -131,7 +131,7 @@ def ExportTs2Csv(ts, csvFilePath, stationId, stationName, timeOfSimulationRun):
     
     for timeStep in timeSteps:
         valueString = None;
-        if (timeStep.YValue <> None):
+        if (timeStep.YValue != None):
             valueString = timeStep.YValue.ToString(System.Globalization.CultureInfo.InvariantCulture)    
         timeStepString = System.String.Format('{0};{1};{2};{3}', 'PRV', stationId, timeStep.XValue.ToString('yyyyMMddHHmm'), valueString);
         strBuilder.AppendLine(timeStepString);
