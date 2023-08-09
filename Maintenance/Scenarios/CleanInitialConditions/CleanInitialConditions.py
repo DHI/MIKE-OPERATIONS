@@ -1,4 +1,3 @@
- 
 import clr
 clr.AddReference("System")
 from System import *
@@ -28,7 +27,7 @@ def ManageInitialConditions(modelsetupPath, days, types):
     # get the model setup
     modelsetup = scmgr.ModelSetupList.Fetch(modelsetupPath);
     if (modelsetup != None):
-        print "Deleting initial conditions for modelsetup \'%s\' of type(s) \'%s\' older than %d days" %(modelsetupPath, types, days);
+        print("Deleting initial conditions for modelsetup \'%s\' of type(s) \'%s\' older than %d days" %(modelsetupPath, types, days));
         scmgr.ModelSetupList.Fill(modelsetup);
         initialConditions = modelsetup.ModelInitialConditionList.GetAll();
         initialConditionsToDelete = [];
@@ -39,7 +38,7 @@ def ManageInitialConditions(modelsetupPath, days, types):
                 
         if (initialConditionsToDelete.Count>0):
             for ic in initialConditionsToDelete:
-                print "\'%s\' : %s - %s : %s" %(ic.Name, ic.StartDate.ToString("yyyy-MM-dd hh:mm:ss"), ic.StartDate.ToString("yyyy-MM-dd hh:mm:ss"), ic.Type.ToString());
+                print("\'%s\' : %s - %s : %s" %(ic.Name, ic.StartDate.ToString("yyyy-MM-dd hh:mm:ss"), ic.StartDate.ToString("yyyy-MM-dd hh:mm:ss"), ic.Type.ToString()));
                 modelsetup.ModelInitialConditionList.Delete(ic);            
         else:
-            print "Nothing to delete"	
+            print("Nothing to delete")
