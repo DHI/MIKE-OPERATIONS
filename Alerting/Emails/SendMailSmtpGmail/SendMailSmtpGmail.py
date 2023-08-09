@@ -47,6 +47,6 @@ def SendMail(emails, subject, msgtxt, msghtml):
         smtpserver.sendmail(mail_user, emails.split(";") + [mail_user], msg.as_string())
         smtpserver.quit()
 
-    except Exception, e:
+    except Exception as e:
             errorMsg = "Unable to send email. Error: %s" % str(e)
-            print errorMsg                   
+            print(errorMsg)
