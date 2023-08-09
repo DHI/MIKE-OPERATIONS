@@ -24,7 +24,7 @@ class MyHTMLParser(HTMLParser):
     def handle_data(self, data):
         d = data.strip()
         if d != '':
-            # print "some data  :", d
+            # print("some data  :", d)
             self.listData.append(d)
             
 def crawler(spreadsheet,worksheet, days):
@@ -53,7 +53,7 @@ def crawler(spreadsheet,worksheet, days):
         tsURL = tsDef['tsURL']
         tsTargetUnit = tsDef['tsTargetUnit']
         tsOffset = tsDef['tsOffset']
-        print tsPath
+        print(tsPath)
         valuepairs = _crawl4data(tsURL, fromDate, toDate)
         if valuepairs.Count>0:
             tsTemp = tsMgr.TimeSeriesList.CreateNew(tsPath)
@@ -71,7 +71,7 @@ def crawler(spreadsheet,worksheet, days):
                 
                 vpList.append(vp)
         
-            print "{} timesteps".format(vpList.Count)
+            print("{} timesteps".format(vpList.Count))
             
             tsTemp.SetData(sorted(vpList,key=lambda vp:vp.XValue))
             tsTemp.SetYAxisUnit(tsTargetUnit,True)
@@ -79,9 +79,9 @@ def crawler(spreadsheet,worksheet, days):
             tsGroupPath = DssPath.RemoveEntityName(tsPath)
             tsMgr.CopyTimeSeries(tsTemp,tsGroupPath, TimeSeriesCopyAction.CopyDataInPeriod)
         else:
-            print "no value found for interval"
+            print("no value found for interval")
             
-    print "done"
+    print("done")
     
 def _readspreadsheet(sPath,worksheet):
     
@@ -119,15 +119,15 @@ def _crawl4data(url, fromDate, toDate):
         # Get the response.
         with request.GetResponse () as response:
             # Display the status.
-            print "Web : " + response.StatusDescription;
+            print("Web : " + response.StatusDescription);
             # Get the stream containing content returned by the server.
             with response.GetResponseStream () as dataStream :
                 # Open the stream using a StreamReader for easy access.
                 reader = StreamReader (dataStream);
                 # Read the content.
                 responseFromServer = reader.ReadToEnd ();
-                #print responseFromServer 
-                #print "***************************************************"
+                #print(responseFromServer)
+                #print("***************************************************")
                 
                 # find all h4tags and extract time and value
                 parser = MyHTMLParser()
@@ -160,7 +160,7 @@ def _crawl4data(url, fromDate, toDate):
                         v = ""                    
 
     except Exeption as e:
-        print "Error parsing " + str(e)
+        print("Error parsing " + str(e))
     
     return valuepairs    
     
