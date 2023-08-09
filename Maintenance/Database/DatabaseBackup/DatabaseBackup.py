@@ -314,6 +314,9 @@ def MakeDateFromNow(days):
     """
     return DateTime.Now.Date.AddDays(-days)    
 
+clr.AddReference("Npgsql")
+from Npgsql import *
+
 def WipeChangelogs(days):
     """
     <Script>
@@ -324,9 +327,7 @@ def WipeChangelogs(days):
     </Parameters>
     </Script>
     """
-    clr.AddReference("Npgsql")
-    from Npgsql import *
-    
+
     d = DateTime.Now.Date.AddDays(-days)    
     _log( "removing changes before " + d.ToString("yyyy-MM-dd HH:mm:ss") )
     
