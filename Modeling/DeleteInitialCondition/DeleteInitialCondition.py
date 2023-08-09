@@ -1,4 +1,3 @@
- 
 import clr
 clr.AddReference("System")
 from System import *
@@ -19,7 +18,7 @@ def DeleteInitialCondition(modelsetuppath, id):
     scm = app.Modules.Get("Scenario Manager")
     ms = scm.ModelSetupList.Fetch(modelsetuppath)
     if ms!=None:
-        print "found model setup " + ms.Name;        
+        print("found model setup " + ms.Name);        
         guid = Guid.Parse(id);
         ini = ms.ModelInitialConditionList.Fetch(guid)
         if ini != None:
@@ -29,20 +28,20 @@ def DeleteInitialCondition(modelsetuppath, id):
                 if (sc.ModelSetupId.Equals(ms.Id) and sc.InitialCondition!=""):
                     pini = scm.ScenarioList.GetModelInitialConditionParser(sc);
                     if pini.GetInitialCondition().Id.Equals(guid):
-                        print "Initial condition is used - cannot delete"
+                        print("Initial condition is used - cannot delete")
                         bOK = False;
             
             if bOK:
-                print "deleting " + ini.ToString();
+                print("deleting " + ini.ToString());
                 ms.ModelInitialConditionList.Delete(ini);
             else:
-                print "cannot delete";
+                print("cannot delete");
         else:
-            print "not found " + id;
+            print("not found " + id);
     else:
-        print "model setup not found";
+        print("model setup not found");
         
-    print "done";
+    print("done");
 
     """
     <Script>
@@ -66,7 +65,7 @@ def DeleteInitialCondition(modelsetuppath, id):
     # get the model setup
     modelsetup = scmgr.ModelSetupList.Fetch(modelsetupPath);
     if (modelsetup != None):
-        print "Deleting initial conditions for modelsetup \'%s\' of type(s) \'%s\' older than %d days" %(modelsetupPath, types, days);
+        print("Deleting initial conditions for modelsetup \'%s\' of type(s) \'%s\' older than %d days" %(modelsetupPath, types, days));
         scmgr.ModelSetupList.Fill(modelsetup);
         initialConditions = modelsetup.ModelInitialConditionList.GetAll();
         initialConditionsToDelete = [];
@@ -77,7 +76,7 @@ def DeleteInitialCondition(modelsetuppath, id):
                 
         if (initialConditionsToDelete.Count>0):
             for ic in initialConditionsToDelete:
-                print "\'%s\' : %s - %s : %s" %(ic.Name, ic.StartDate.ToString("yyyy-MM-dd hh:mm:ss"), ic.StartDate.ToString("yyyy-MM-dd hh:mm:ss"), ic.Type.ToString());
+                print("\'%s\' : %s - %s : %s" %(ic.Name, ic.StartDate.ToString("yyyy-MM-dd hh:mm:ss"), ic.StartDate.ToString("yyyy-MM-dd hh:mm:ss"), ic.Type.ToString()));
                 modelsetup.ModelInitialConditionList.Delete(ic);            
         else:
-            print "Nothing to delete"	
+            print("Nothing to delete")	
