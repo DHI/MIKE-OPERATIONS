@@ -77,7 +77,7 @@ def MakeDailyDataReport(emails, pwd):
             
 
 def _log(msg):
-    print "%s - %s" %(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), msg);
+    print("%s - %s" %(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), msg));
 
 
 
@@ -195,7 +195,7 @@ def _SendMail(fromMail, pwd, emails, subject, msgtxt, msghtml):
         # send the message
         client.Send(message);
     except Exception as e:
-        print str(e)
+        print(str(e))
         raise
     finally:
         ServicePointManager.ServerCertificateValidationCallback = None
