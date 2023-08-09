@@ -24,7 +24,7 @@ def Import(refdate, hindcastperiod, forecastperiod):
     if timeSeriesManager == None:
         raise Exception('Can''t obtain a reference to Time series Manager.')
             
-    refdate= DateTime.ParseExact(refdate, 'MM/dd/yyyy HH:mm', System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None)
+    refdate= DateTime.ParseExact(refdate, 'MM/dd/yyyy HH:mm', System.Globalization.CultureInfo.InvariantCulture)
 
     timesteps = GetDataFromOracle("Station1", refdate.AddHours(-hindcastperiod), refdate.AddHours(forecastperiod))
 
