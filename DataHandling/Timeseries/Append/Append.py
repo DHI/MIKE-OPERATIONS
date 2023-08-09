@@ -28,4 +28,4 @@ def AppendForecast(TsName1, TsName2):
     vpList = ts2.Fetch(q)    
     ts1.Add(vpList)
 
-    print 'done'
+    print('done')
