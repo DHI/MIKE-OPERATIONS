@@ -222,7 +222,7 @@ def ExportDocument(docPath, directory):
     _log( "... to " + docFile)
                            
 def _log(msg):
-    print "%s - %s" %(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), msg);
+    print("%s - %s" %(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), msg));
 
 clr.AddReference("Ionic.Zip")
 from Ionic.Zip import *
@@ -388,8 +388,8 @@ def StackNetCDFfiles(scriptName, DirPath, SavePath, workingDir,docGroup):
         for doc in docList:
             ExportgetDocument(docGroup +'/'+ doc.Name,workingDir)
         
-        print argumentString
-        print workingDir
+        print(argumentString)
+        print(workingDir)
         
         RStatisticsTool(argumentString, workingDir)
         # Check if log file exists
@@ -398,16 +398,16 @@ def StackNetCDFfiles(scriptName, DirPath, SavePath, workingDir,docGroup):
             lines = File.ReadAllText(logFile)
             _log(lines)
             if 'Error' in lines:
-                print ('GPM netcdf stack failed')
+                print('GPM netcdf stack failed')
                 raise Exception('GPM Data download failed')
         else:
-            print ('Rlog.txt is missing')
+            print('Rlog.txt is missing')
             raise Exception('Rlog.txt is missing')
     finally:
         try:
             Directory.Delete(workingDir, True)
         except Exception as e:
-            print str(e)
+            print(str(e))
 
 
 def RStatisticsTool(argumentString, workingDir):
@@ -483,7 +483,7 @@ def DeleteFilesBasedAge(path, days, fileExt):
             delta      = now - createtime
             # Delete files which were created specified days ago not the netdcf folder 
             if delta.days > days: 
-#                print fullpath, delta.days
+#                print(fullpath, delta.days)
                 try:
                     os.remove(fullpath)
                     _log('deleted %s'%file)
