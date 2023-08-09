@@ -43,7 +43,7 @@ def ExecuteValidation(validationSpreadsheetPath, tOF, hindcast, forecast, logFil
 
     for validationInfo in validationInfoList:
         ts = timeSeriesManager.TimeSeriesList.Fetch(validationInfo.TsPath);
-        print validationInfo.TsOutputPath
+        print(validationInfo.TsOutputPath)
         if (ts == None):
             message = 'Time series ' + validationInfo.TsPath + ' must be created before import.';
             WriteError(message);
@@ -56,7 +56,7 @@ def ExecuteValidation(validationSpreadsheetPath, tOF, hindcast, forecast, logFil
             startValidationDate = tof.AddDays(-hindcast)
             endValidationDate = tof.AddDays(forecast)
 
-            if (startValidationDate <> None and endValidationDate <> None):
+            if (startValidationDate != None and endValidationDate != None):
                 if type(startValidationDate) is System.DateTime:
                     startDate = tof.AddDays(-hindcast);
                 else:
@@ -363,7 +363,7 @@ def LoadValidationSpreadsheet(validationSpreadsheetPath):
         if isValid == True:
             validationInfo = ValidationInfo(tsPath, tsOutputPath, rangeMin, rangeMax, replaceValue, maxGap, maxRateOfChange);
             stationValidationList.Add(validationInfo);
-            print validationInfo.TsOutputPath
+            print(validationInfo.TsOutputPath)
 
         rowNo = rowNo + 1;
         
@@ -522,10 +522,10 @@ class ValidationInfo(object):
         self.ReplaceValue = replaceValue
         self.MaxGap = maxGap
         self.MaxRateOfChange = maxRateOfChange
-        print 'serie temporelle =' + tsPath
-        print 'dossier validation = ' + tsOutputPath
-        print 'valeur min =',rangeMin
-        print 'valeur max =',rangeMax
-        print 'valeur de remplacement =',replaceValue
-        print 'max gap =',maxGap
-        print 'max tx evloution/h =',maxRateOfChange       
+        print('serie temporelle =' + tsPath)
+        print('dossier validation = ' + tsOutputPath)
+        print('valeur min =',rangeMin)
+        print('valeur max =',rangeMax)
+        print('valeur de remplacement =',replaceValue)
+        print('max gap =',maxGap)
+        print('max tx evloution/h =',maxRateOfChange)       
