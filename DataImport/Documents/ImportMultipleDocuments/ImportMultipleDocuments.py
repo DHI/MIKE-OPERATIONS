@@ -21,13 +21,13 @@ def ImportMultipleDocuments(directory, documentFolder):
         dm.DocumentFolderList.Add(dg);
         
     for f in Directory.GetFiles(directory):
-        print f
+        print(f)
         fname = os.path.split(f)[1];
         d = dm.DocumentList.Fetch(documentFolder + "/" + fname)
         if d is not None:
-            print "  - deleting old document"
+            print("  - deleting old document")
             dm.DocumentList.Delete(d);
         dm.DocumentList.Import(f, dg.Id, fname);
-        print "  - importing"
+        print("  - importing")
 
-    print "done"
+    print("done")
