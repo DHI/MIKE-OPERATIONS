@@ -95,7 +95,7 @@ def UpdateScenarioInputTimeSeries(spreadsheetPath):
             # Get the input time series and check incude/exclude
             
             if (modelObjectDict.ContainsKey(modelObjectName) == False):
-                print 'A model object with the name ' + modelObjectName + ' was not found in the model setup. The configuration row was ignored!'
+                print('A model object with the name ' + modelObjectName + ' was not found in the model setup. The configuration row was ignored!')
                 continue
                 
             if include:
@@ -138,7 +138,7 @@ def UpdateScenarioInputTimeSeries(spreadsheetPath):
             ts = timeSeriesModule.TimeSeriesList.Fetch(tsPath);
             
             if (ts == None):
-                print 'A time series with the path ' + tsPath + ' was not found'
+                print('A time series with the path ' + tsPath + ' was not found')
                 continue
             
             scenarioInputTs.TimeseriesId = ts.Id
@@ -185,7 +185,7 @@ def CreateInputTimeSeriesSpreadsheet(modelSetupPath, scenarioName, spreadsheetNa
     if (modelSetup == None):
         raise System.ArgumentException('ModelSetup ' + modelSetupPath + ' was not found')
         
-    if (scenarioName <> None):
+    if (scenarioName != None):
         scenarioPath = modelSetupPath.TrimEnd('/') + '/' + scenarioName
         scenario = scenarioModule.ScenarioList.Fetch(scenarioPath);
         
@@ -194,7 +194,7 @@ def CreateInputTimeSeriesSpreadsheet(modelSetupPath, scenarioName, spreadsheetNa
     
     spreadsheet = spreadsheetModule.SpreadsheetList.Fetch('/' + spreadsheetName)
     
-    if (spreadsheet <> None):
+    if (spreadsheet != None):
         raise System.ArgumentException('Spreadsheet ' + spreadsheetName + ' already exists.')
         
     # Create, add and open the spreadsheet.
@@ -236,7 +236,7 @@ def CreateInputTimeSeriesSpreadsheet(modelSetupPath, scenarioName, spreadsheetNa
         spreadsheetModule.SetCellValue(spreadsheet, 'Sheet1', rowNo, 2, inputTsName)
 
     # Set the ts path if mapped ts has been mapped.
-    if (scenario <> None):
+    if (scenario != None):
         modelObjectList = modelSetup.ModelObjectList.FetchAll()
         modelObjectDict = System.Collections.Generic.Dictionary[object, DHI.Solutions.ScenarioManager.Interfaces.IModelObject]()
 
@@ -246,7 +246,7 @@ def CreateInputTimeSeriesSpreadsheet(modelSetupPath, scenarioName, spreadsheetNa
         inputTsList = scenario.ScenarioInputTimeseriesDefinitionList.FetchAll()
 
         for inputTs in inputTsList:
-            if (inputTs.TimeseriesId <> None):
+            if (inputTs.TimeseriesId != None):
                 modelObjectId = inputTs.ModelSetupInputTimeseriesDefinition.ModelObjectId
                 moName = modelObjectDict[modelObjectId].Name
                 rowKey = moName + ';' + inputTs.Name
