@@ -30,7 +30,7 @@ def Import(refdate, hindcastperiod, forecastperiod):
 
     ts = timeSeriesManager.TimeSeriesList.Fetch('/Station1');
     if(ts == None):
-        print 'timeseries not found'
+        print('timeseries not found')
     else:
         if(len(timesteps) > 0):
             ts.Delete(timesteps[0].Date, timesteps[len(timesteps)-1].Date)
@@ -40,7 +40,7 @@ def Import(refdate, hindcastperiod, forecastperiod):
                 p.YValue = step.Value;
                 ts.Add(p);
         else:
-            print 'No timestep found for timeseries'
+            print('No timestep found for timeseries')
     
 def GetDataFromOracle(strExtIDRef, fromDate, toDate):    
     timesteps = []
@@ -70,7 +70,7 @@ def GetDataFromOracle(strExtIDRef, fromDate, toDate):
                     oldTime=dr[0]
                     
         except Exception as inst:
-            print inst
+            print(inst)
         finally:
             conn.Dispose();       
     return timesteps
