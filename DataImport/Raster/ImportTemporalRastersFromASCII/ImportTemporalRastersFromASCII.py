@@ -100,7 +100,7 @@ def ImportAsciiRaster(folder,gisgroup):
         gisManager.RasterList.Update(raster)
          
     except Exception as e:
-        print str(e)   
+        print(str(e))   
         
     
     gisManager.RasterList.Update(raster)    
