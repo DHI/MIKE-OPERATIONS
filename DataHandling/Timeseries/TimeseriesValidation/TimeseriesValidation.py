@@ -60,12 +60,12 @@ def ExecuteValidation(validationSpreadsheetPath, tOF, hindcast, forecast, logFil
                 if type(startValidationDate) is System.DateTime:
                     startDate = tof.AddDays(-hindcast);
                 else:
-                    startDate = System.DateTime.ParseExact(tof.AddDays(-hindcast), 'MM/dd/yyyy HH:mm:ss', System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None)
+                    startDate = System.DateTime.ParseExact(tof.AddDays(-hindcast), 'MM/dd/yyyy HH:mm:ss', System.Globalization.CultureInfo.InvariantCulture)
                 #Convert dates from String format to DateTime format
                 if type(endValidationDate) is System.DateTime:
                     endDate = tof.AddDays(forecast);
                 else:
-                    endDate = System.DateTime.ParseExact(tof.AddDays(forecast), 'MM/dd/yyyy HH:mm:ss', System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None)
+                    endDate = System.DateTime.ParseExact(tof.AddDays(forecast), 'MM/dd/yyyy HH:mm:ss', System.Globalization.CultureInfo.InvariantCulture)
                 
                 periodOption = PeriodOption.Sub_period;
 
