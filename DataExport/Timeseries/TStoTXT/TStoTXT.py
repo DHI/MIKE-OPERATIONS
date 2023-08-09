@@ -119,8 +119,8 @@ def Get_TStoExport(exportSpreadsheetPath, startExportDate, endExportDate):
         raise Exception('Can''t obtain a reference to Time series Manager.');
         
     for exportInfo in exportInfoList:
-        print 'fichier exporté =', exportInfo.TsToExport;
-        print 'dossier MIKE Opération =',exportInfo.OutputPath;
+        print('fichier exporté =', exportInfo.TsToExport);
+        print('dossier MIKE Opération =',exportInfo.OutputPath);
 
     start = DateTime.ParseExact(startExportDate, 'MM/dd/yyyy HH:mm:ss', CultureInfo.InvariantCulture); 
     end = DateTime.ParseExact(endExportDate, 'MM/dd/yyyy HH:mm:ss', CultureInfo.InvariantCulture);
@@ -226,7 +226,7 @@ def WriteExportTs_2(ts, outputPath, stationId, type, timeOfSimulationRun,firstTi
     for timeStep in timeSteps:
         if timeStep.XValue > start and timeStep.XValue < end:
             valueString = None;
-            if (timeStep.YValue <> None):
+            if (timeStep.YValue != None):
                 valueString = timeStep.YValue.ToString(System.Globalization.CultureInfo.InvariantCulture);
                 if type == 'debit':
                    timeStepString = System.String.Format('{0};{1};{2};{3};{4};{5};{6}', 'CQT', stationId, timeStep.XValue.ToString('yyyyMMdd'),timeStep.XValue.ToString('HHmm'), valueString, '2', '9');
