@@ -111,7 +111,7 @@ def DownloadYr(spreadsheetPath, worksheetName,hours):
             rowNo = rowNo + 1;
             
         _logprint("Done");
-    except Exception, e:
+    except Exception as e:
         _logprint("ERROR: %s" %(str(e)));
         
 
