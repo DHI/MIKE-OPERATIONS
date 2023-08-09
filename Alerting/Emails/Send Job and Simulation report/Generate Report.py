@@ -106,7 +106,7 @@ def _MakeDailyMiscReport():
                     oldComputer = ji.Computer.lower()
                 else:
                     c=c+1
-                bError = not ji.Succeeded and int(ji.Status)<>1
+                bError = not ji.Succeeded and int(ji.Status)!=1
                 if not bError: cntOK = cntOK + 1
                 if c<=3 and oldComputer == ji.Computer.lower():
                     _log( ji.ExecutedAt.ToString("yyy-MM-dd HH:mm:ss") + " @ " + ji.Computer )
