@@ -43,7 +43,7 @@ def UpdateFeatureAttribute(fcpath, fieldname, oldvalue, newvalue):
         i=i+1;
     
     if (fa == None):
-        print 'field ' + fieldname + 'not found';
+        print('field ' + fieldname + 'not found');
         return;
         
     # find a feature in the feature class
@@ -52,7 +52,7 @@ def UpdateFeatureAttribute(fcpath, fieldname, oldvalue, newvalue):
     fc.Query(q);
     features = fc.GetAll();
     if (features.Count==0):
-        print 'Not feautre found with value ' + oldvalue;
+        print('Not feautre found with value ' + oldvalue);
         return
 
     # get the first
