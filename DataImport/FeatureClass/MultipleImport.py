@@ -61,7 +61,7 @@ def ShapeFileImportTool(inputItems, coordinateSystem, featureClassName,
         for inputItem in inputItems:
             tool.InputItems.Add(inputItem)
     else:
-        if inputItems <> None:
+        if inputItems != None:
             tool.InputItems.Add(inputItems)
     tool.CoordinateSystem = coordinateSystem
     tool.FeatureClassName = featureClassName
