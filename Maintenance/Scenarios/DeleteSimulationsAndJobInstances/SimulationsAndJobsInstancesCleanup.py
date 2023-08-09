@@ -37,7 +37,7 @@ def Cleanup(numberOfDays, scenarioFullPath, jobName):
     
     if len(simulationsToBeDeleted) > 0:
         for simulation in simulationsToBeDeleted:
-            print 'Deleting Simulation: ' + simulation.Name
+            print('Deleting Simulation: ' + simulation.Name)
             scmgr.SimulationList.Delete(simulation, True)
     
     # Delete job logs older than 7 days as well.
@@ -51,5 +51,5 @@ def Cleanup(numberOfDays, scenarioFullPath, jobName):
     
     if len(jobInstancesToBeDeleted) > 0:
         for jobInstance in jobInstancesToBeDeleted:
-            print 'Deleting Job Instance: ' + jobInstace.Name
+            print('Deleting Job Instance: ' + jobInstace.Name)
             jobmgr.JobInstanceList.Delete(jobInstance)
