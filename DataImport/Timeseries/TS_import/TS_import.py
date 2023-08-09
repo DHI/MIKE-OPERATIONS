@@ -30,7 +30,7 @@ def ImportTS(spreadSheetPath, forecastTime, hindcastPeriod, forecastPeriod):
     
     
      #Convert dates from String format to DateTime format
-    forecastTime = DateTime.ParseExact(forecastTime, 'MM/dd/yyyy HH:mm:ss', System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None)
+    forecastTime = DateTime.ParseExact(forecastTime, 'MM/dd/yyyy HH:mm:ss', System.Globalization.CultureInfo.InvariantCulture)
     print("TOF" , forecastTime)
 
     try:
