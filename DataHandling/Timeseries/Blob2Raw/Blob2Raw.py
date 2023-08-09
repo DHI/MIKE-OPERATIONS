@@ -23,7 +23,7 @@ import os, sys
 def TSBlobToRaw():
     """
     <Script>
-    <Author>Kaku&FIK</Author>
+    <Author>Kaku, FIK</Author>
     <Description>Changes source type of all time series from Blob to Raw. DLL needed.</Description>
     </Script>
     """
