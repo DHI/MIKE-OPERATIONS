@@ -35,7 +35,7 @@ def GenerateMap():
                 latestSimulation = simulation
             if (simulation.TimeOfSimulationRun > latestSimulation.TimeOfSimulationRun):
                 latestSimulation = simulation
-    print "Latest simulation = " +latestSimulation.ToString()
+    print("Latest simulation = " +latestSimulation.ToString())
     
 #   Get output timeseries 
     simulationOutputTimeseries=None;
@@ -44,9 +44,9 @@ def GenerateMap():
             simulationOutputTimeseries = timeseries;
             break
     if simulationOutputTimeseries != None:
-        print "Output timeseries found"
+        print("Output timeseries found")
     else :
-        print "Output timeseries not found"
+        print("Output timeseries not found")
         exit()
         
 #   Get maximum value in forecast period 
@@ -59,7 +59,7 @@ def GenerateMap():
     for t in timesteps:
         if t.YValue > max:
             max = t.YValue
-    print "Max value = " + max.ToString()
+    print("Max value = " + max.ToString())
     
 #   Prepare raster processor 
     gismod = app.Modules.Get("GIS Manager")
@@ -68,7 +68,7 @@ def GenerateMap():
     inputItems.append(intputRaster)
     
     mapping = {inputRasterPath : intputRaster}
-    print 'running...'
+    print('running...')
     
 #  Run raster processor and save output
     raster = gismod.RasterList.Fetch("/" + outputRasterName)
@@ -78,7 +78,7 @@ def GenerateMap():
     outputRaster.Name = outputRasterName 
     gismod.RasterList.Add(outputRaster)
     
-    print 'done'
+    print('done')
 
 def RasterCalculatorTool(inputItems, formula, nameMapping):
     """
@@ -132,7 +132,7 @@ Missing or "No Data" values can be represented in the formula with any
         for inputItem in inputItems:
             tool.InputItems.Add(inputItem)
     else:
-        if inputItems <> None:
+        if inputItems != None:
             tool.InputItems.Add(inputItems)
     tool.Formula = formula
     tool.NameMapping = nameMapping
