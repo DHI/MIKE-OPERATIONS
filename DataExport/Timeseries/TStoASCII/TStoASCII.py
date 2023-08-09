@@ -20,13 +20,13 @@ def ExportSimulationOutput(simPath):
     tsMgr = app.Modules.Get('Time series Manager')
 
     # Use it to  read a Simulation
-    print "Starting export of output for " + simPath
+    print("Starting export of output for " + simPath)
     sim = sceMgr.SimulationList.Fetch(simPath)
 
     # collect the output timeseries
     tslist = []
     for sots in sim.SimulationOutputTimeseriesList.GetAll():  
-        print sots.Name
+        print(sots.Name)
         ts = tsMgr.TimeSeriesList.Fetch(sots.TimeseriesId)
         tslist.append(ts);
 
@@ -36,9 +36,9 @@ def ExportSimulationOutput(simPath):
         TimeseriesExportTool(tslist, ExportFormatOptions.Ascii, exportDirectory, False, DirectoryStructureOptions.NoSubfolders);
 
     else:
-        print "No time series to export";
+        print("No time series to export");
 
-    print "...done"    
+    print("...done")    
 
 def TimeseriesExportTool(inputItems, exportFormat, exportDirectory, exportMetadata, directoryStructure):
     """
