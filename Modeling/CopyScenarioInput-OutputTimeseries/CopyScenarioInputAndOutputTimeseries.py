@@ -60,11 +60,11 @@ def copyScenarioInputimeseries(source, target):
                 notfound =  notfound + 1
                 msg = msg + "  - ***** NOT INCLUDED *****"
 
-        print msg
+        print(msg)
         
-    print notfound, "not found"        
+    print(notfound, "not found")
     if len(mitsList) >0:
-        print "inserting ", len(mitsList)
+        print("inserting ", len(mitsList))
         target.Include(mitsList);
         
 
@@ -119,9 +119,9 @@ def copyScenarioOutputimeseries(source, target):
             notfound = notfound + 1
             msg = msg + "  - ***** NOT INCLUDED *****"
 
-        print msg
+        print(msg)
 
-    print notfound, "not found"        
+    print(notfound, "not found")        
     if len(motsList) >0:
-        print "inserting ", len(motsList)
+        print("inserting ", len(motsList))
         target.Include(motsList);
