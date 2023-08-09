@@ -21,16 +21,16 @@ def DownloadFromFtp(server, serverPath, username, password, localPath):
     """
 
     try:
-        print "opening ftp server ..."
+        print("opening ftp server ...")
         ftp = ftplib.FTP(server)
-        print "login ..."
+        print("login ...")
         ftp.login(username, password)
         
-        print "open local file and download ..."
+        print("open local file and download ...")
         with open(localPath, "wb") as file: 
             ftp.retrbinary("RETR " + serverPath, file.write)
             
-        print "Successful download of " + serverPath + " to " + localPath            
+        print("Successful download of " + serverPath + " to " + localPath)
     except Exception as e:
-        print "Error downloading " + serverPath + " : " + str(e);        
+        print("Error downloading " + serverPath + " : " + str(e));        
         
