@@ -25,6 +25,6 @@ def SearchTS(pattern):
     # do your stuff - show the found time name
     i=0;
     while i<tslist.Count:
-        print tslist[i].Name;
+        print(tslist[i].Name);
         i = i + 1;
     pass;
