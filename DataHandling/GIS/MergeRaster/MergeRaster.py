@@ -54,5 +54,5 @@ def MergeRaster(rasterGroupPath):
         # add target raster to database
         gisMgr.RasterList.Add(targetRaster)
     else:
-        print "There are no raster in group " + rasterGroupPath
+        print("There are no raster in group " + rasterGroupPath)
         return
