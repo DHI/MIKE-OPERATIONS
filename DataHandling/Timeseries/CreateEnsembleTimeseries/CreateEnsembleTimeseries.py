@@ -49,7 +49,7 @@ def executeConvertToEnsenble(ensembleSpreadsheetPath):
        
         ts=[tsMoy,tsMin,tsMax];
                
-        if (ensembleInfo.TsPathMoy <> None):
+        if (ensembleInfo.TsPathMoy != None):
                     ensembleName = ensembleInfo.TsOutput ;
                     targetGroup = ensembleInfo.GroupName;
                     tsOutputPath = targetGroup + '/' + ensembleName
@@ -145,7 +145,7 @@ def ConvertToEnsembleTool(inputItems, ensembleName, targetGroup,
         for inputItem in inputItems:
             tool.InputItems.Add(inputItem)
     else:
-        if inputItems <> None:
+        if inputItems != None:
             tool.InputItems.Add(inputItems)
 
         
