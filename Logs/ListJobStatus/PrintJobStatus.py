@@ -22,10 +22,10 @@ def PrintJobStatus():
     
     # Report how many jobs are running
     if jobs.Count > 0:
-        print str(jobs.Count) + " running job(s): "
+        print(str(jobs.Count) + " running job(s): ")
         for job in jobs:
-            print job.Job.Name + " is running"
+            print(job.Job.Name + " is running")
     else:
-        print "no job is running"
+        print("no job is running")
     
-    print "...done."
+    print("...done.")
