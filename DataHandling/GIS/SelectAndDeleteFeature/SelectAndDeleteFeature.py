@@ -25,7 +25,7 @@ def GISScript():
         i=i+1;
     
     if (fa == None):
-        print 'field ' + fieldname + 'not found';
+        print('field ' + fieldname + 'not found');
         return;
         
     # find a feature in the feature class
@@ -34,7 +34,7 @@ def GISScript():
     q.Add(QueryElement('teil_eg', 'ZEG*', QueryOperator.Like));
     features = fc.Fetch(q);
     if (features.Count==0):
-        print 'Not feautre found with value ' + oldvalue;
+        print('Not feautre found with value ' + oldvalue);
         return
     
     fc.Delete(features)
