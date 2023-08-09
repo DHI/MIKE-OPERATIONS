@@ -82,13 +82,13 @@ def ExecuteValidation(validationSpreadsheetPath, tOF, hindcast, forecast, logFil
             rateOfChangeUnit = ReplaceTool_RateOfChangeUnit.Per_hour;
 
             # Change input time series or copy.
-            if (validationInfo.TsOutputPath <> None and validationInfo.TsOutputPath.Length > 0):
+            if (validationInfo.TsOutputPath != None and validationInfo.TsOutputPath.Length > 0):
                 processOption = ProcessOption.Process_copy;
             else:
                 processOption = ProcessOption.Process_input_timeseries;
                 
             # Remplace les valeurs nulles par une valeur de remplacement (interpolationlineaire)
-            if (validationInfo.ReplaceValue <> None):
+            if (validationInfo.ReplaceValue != None):
                 replaceValueMethod = ReplaceValueMethod.With_constant;
                 replaceByValue = validationInfo.ReplaceValue
                 replaceValue = None
@@ -100,7 +100,7 @@ def ExecuteValidation(validationSpreadsheetPath, tOF, hindcast, forecast, logFil
                         rangeMin, rangeOption, maxRateOfChange, rateOfChangeUnit, 
                         rateOfChangeOption, maxGapUnit, maxGap);
                 
-                    if (outputTimeSeries <> None and outputTimeSeries.Count > 0):
+                    if (outputTimeSeries != None and outputTimeSeries.Count > 0):
                         ts = outputTimeSeries[0];
 
                 except Exception, e:
@@ -108,7 +108,7 @@ def ExecuteValidation(validationSpreadsheetPath, tOF, hindcast, forecast, logFil
                     WriteError(message);
          
             # Limit_Rate_Of_Change
-            if (validationInfo.MaxRateOfChange <> None):
+            if (validationInfo.MaxRateOfChange != None):
                 replaceValueMethod = ReplaceValueMethod.Limit_rate_of_change;
                 maxRateOfChange = validationInfo.MaxRateOfChange;
                 rateOfChangeOption = RateOfChangeOption.With_constant;
@@ -124,14 +124,14 @@ def ExecuteValidation(validationSpreadsheetPath, tOF, hindcast, forecast, logFil
                         rangeMin, rangeOption, maxRateOfChange, rateOfChangeUnit, 
                         rateOfChangeOption, maxGapUnit, maxGap);
                 
-                    if (outputTimeSeries <> None and outputTimeSeries.Count > 0):
+                    if (outputTimeSeries != None and outputTimeSeries.Count > 0):
                         ts = outputTimeSeries[0];
                 except Exception, e:
                     message = 'Execute Replace Value Tool: ' + e.ToString();
                     WriteError(message);
                 
             # Replace_Range_With_Constant
-            if (validationInfo.RangeMax <> None and validationInfo.RangeMin <> None):
+            if (validationInfo.RangeMax != None and validationInfo.RangeMin != None):
                 replaceValueMethod = ReplaceValueMethod.Replace_range_with_constant;
                 rangeOption = RangeOption.Replace_outside_range;
                 rangeMax = validationInfo.RangeMax;
@@ -146,7 +146,7 @@ def ExecuteValidation(validationSpreadsheetPath, tOF, hindcast, forecast, logFil
                         rangeMin, rangeOption, maxRateOfChange, rateOfChangeUnit, 
                         rateOfChangeOption, maxGapUnit, maxGap);
                 
-                    if (outputTimeSeries <> None and outputTimeSeries.Count > 0):
+                    if (outputTimeSeries != None and outputTimeSeries.Count > 0):
                         ts = outputTimeSeries[0];
                 except Exception, e:
                     message = 'Execute Replace Value Tool: ' + e.ToString();
@@ -154,7 +154,7 @@ def ExecuteValidation(validationSpreadsheetPath, tOF, hindcast, forecast, logFil
                         
     
             # Remove_From_Max_Gap
-            if (validationInfo.MaxGap <> None and validationInfo.MaxGap > 0):
+            if (validationInfo.MaxGap != None and validationInfo.MaxGap > 0):
                 replaceValueMethod = ReplaceValueMethod.Remove_from_max_gap;
                 maxGapUnit = MaxGapUnit.Hours;
                 maxGap = validationInfo.MaxGap;
@@ -168,7 +168,7 @@ def ExecuteValidation(validationSpreadsheetPath, tOF, hindcast, forecast, logFil
                         rangeMin, rangeOption, maxRateOfChange, rateOfChangeUnit, 
                         rateOfChangeOption, maxGapUnit, maxGap);
                 
-                    if (outputTimeSeries <> None and outputTimeSeries.Count > 0):
+                    if (outputTimeSeries != None and outputTimeSeries.Count > 0):
                         ts = outputTimeSeries[0];
 
                 except Exception, e:
@@ -176,7 +176,7 @@ def ExecuteValidation(validationSpreadsheetPath, tOF, hindcast, forecast, logFil
                     WriteError(message);
                     
             # Replace_with interpolation
-            if (validationInfo.ReplaceValue <> None):
+            if (validationInfo.ReplaceValue != None):
                 replaceValueMethod = ReplaceValueMethod.Interpolation;
                 replaceValue = validationInfo.ReplaceValue
 
@@ -187,7 +187,7 @@ def ExecuteValidation(validationSpreadsheetPath, tOF, hindcast, forecast, logFil
                         rangeMin, rangeOption, maxRateOfChange, rateOfChangeUnit, 
                         rateOfChangeOption, maxGapUnit, maxGap);
                 
-                    if (outputTimeSeries <> None and outputTimeSeries.Count > 0):
+                    if (outputTimeSeries != None and outputTimeSeries.Count > 0):
                         ts = outputTimeSeries[0];
                 except Exception, e:
                     message = 'Execute Replace Value Tool: ' + e.ToString();
@@ -209,12 +209,12 @@ def WriteTimeSeries(outputPath, outputTimeSeries):
     ts.UseChangeLog = False;
     data = ts.GetAll();
 
-    if (outputPath <> None and outputPath.Length > 0):
+    if (outputPath != None and outputPath.Length > 0):
         tsPath = outputPath.TrimEnd('/');
         tsPath = tsPath + '/' + outputTimeSeries.Name;
         existingTs = timeSeriesManager.TimeSeriesList.Fetch(tsPath);
         
-        if (existingTs <> None):
+        if (existingTs != None):
             existingTs.DeleteAll();
             existingTs.Add(data);
             timeSeriesManager.TimeSeriesList.Update(existingTs);
@@ -223,7 +223,7 @@ def WriteTimeSeries(outputPath, outputTimeSeries):
             groupPath = outputPath;
             tsGroup = timeSeriesManager.TimeSeriesGroupList.Fetch(groupPath);
             
-            if (tsGroup <> None):
+            if (tsGroup != None):
                 ts.GroupId = tsGroup.Id;
                 timeSeriesManager.TimeSeriesList.Add(ts);
             else:
@@ -302,10 +302,10 @@ def LoadValidationSpreadsheet(validationSpreadsheetPath):
         
         isValid = True;
         
-        if (objectTsOutputPath <> None and objectTsOutputPath.ToString().Trim().Length > 0):
+        if (objectTsOutputPath != None and objectTsOutputPath.ToString().Trim().Length > 0):
             tsOutputPath = objectTsOutputPath.ToString().Trim();
 
-        if (objectRangeMin <> None):
+        if (objectRangeMin != None):
             try:
                 rangeMin = float(objectRangeMin)
             except:
@@ -316,7 +316,7 @@ def LoadValidationSpreadsheet(validationSpreadsheetPath):
                 rangeMin = None
                 WriteError('StationId ' + referenceId + ' has an invalid min range.')
 
-        if (objectRangeMax <> None):
+        if (objectRangeMax != None):
             try:
                 rangeMax = float(objectRangeMax)
             except:
@@ -327,7 +327,7 @@ def LoadValidationSpreadsheet(validationSpreadsheetPath):
                 rangeMax = None;
                 WriteError('StationId ' + referenceId + ' has an invalid max range.')            
         
-        if (objectReplaceValue <> None):
+        if (objectReplaceValue != None):
             try:
                 replaceValue = float(objectReplaceValue)
             except:
@@ -338,7 +338,7 @@ def LoadValidationSpreadsheet(validationSpreadsheetPath):
                 replaceValue = None;
                 WriteError('StationId ' + referenceId + ' has an invalid replace value.')            
 
-        if (objectMaxGap <> None):
+        if (objectMaxGap != None):
             try:
                 maxGap = int(objectMaxGap)
             except:
@@ -349,7 +349,7 @@ def LoadValidationSpreadsheet(validationSpreadsheetPath):
                 maxGap = None;
                 WriteError('StationId ' + referenceId + ' has an invalid max gap.')            
 
-        if (objectMaxRateOfChange <> None):
+        if (objectMaxRateOfChange != None):
             try:
                 maxRateOfChange = float(objectMaxRateOfChange)
             except:
@@ -488,7 +488,7 @@ def ReplaceValuesTool(inputItems, replaceValueMethod, periodOption,
         for inputItem in inputItems:
             tool.InputItems.Add(inputItem)
     else:
-        if inputItems <> None:
+        if inputItems != None:
             tool.InputItems.Add(inputItems)
     
     tool.ReplaceValueMethod = replaceValueMethod
