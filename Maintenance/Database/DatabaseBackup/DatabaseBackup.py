@@ -225,7 +225,7 @@ def _log(msg):
     print("%s - %s" %(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), msg));
 
 clr.AddReference("DotNetZip")
-from DotNetZip import *
+from Ionic.Zip import *
 
 def _ExportgetDocument(docPath, tempFolder):
 
