@@ -224,9 +224,8 @@ def ExportDocument(docPath, directory):
 def _log(msg):
     print("%s - %s" %(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), msg));
 
-clr.AddReference("Ionic.Zip")
-from Ionic.Zip import *
-
+clr.AddReference("DotNetZip")
+from DotNetZip import *
 
 def _ExportgetDocument(docPath, tempFolder):
 
