@@ -19,17 +19,20 @@ def MakeSpreadsheet():
     
     # Open the spreadsheet document
     wb = ssmgr.OpenSpreadsheet(ss);
-    
-    # add a sheet tot he open workbook
-    wb = ssmgr.OpenSpreadsheet(ss);
-    ssmgr.AddWorksheet(wb, "MySheet");
-    
-    # update cell C4 in the sheet
-    ssmgr.SetCellValue(wb, "MySheet", 3, 2, "Anders");
-    
-    # insert the sheet into the database in the root
-    ssmgr.SpreadsheetList.Add(wb);
-    ssmgr.SaveSpreadsheet(ss)
+
+    try:
+        # add a sheet to the open workbook
+        ssmgr.AddWorksheet(wb, "MySheet");
+        
+        # update cell C4 in the sheet
+        ssmgr.SetCellValue(wb, "MySheet", 3, 2, "Anders");
+        
+        # insert the sheet into the database in the root
+        ssmgr.SpreadsheetList.Add(wb);
+        ssmgr.SaveSpreadsheet(ss)
+    finally:
+        # Make sure to close the spreadsheet, even if an exception is raised.
+        ssmgr.CloseSpreadsheet(ss);
     pass;
     
 def UpdateSpreadsheet():
@@ -44,12 +47,16 @@ def UpdateSpreadsheet():
     
     # open an existing spreadsheet
     ss = ssmgr.OpenSpreadsheet('/AndersTest');
-    
-    # modify cell E5 in the sheet
-    ssmgr.SetCellValue(ss, "MySheet", 4, 4, "Mekuria");
-    
-    # save the changes
-    ssmgr.SaveSpreadsheet(ss);
+
+    try:
+        # modify cell E5 in the sheet
+        ssmgr.SetCellValue(ss, "MySheet", 4, 4, "Mekuria");
+        
+        # save the changes
+        ssmgr.SaveSpreadsheet(ss);
+    finally:
+        ssmgr.CloseSpreadsheet(ss);
+       
     pass;
 
 def UpdateSpreadsheetWithParameters(value, spreadsheet, tab, cell):
@@ -70,11 +77,14 @@ def UpdateSpreadsheetWithParameters(value, spreadsheet, tab, cell):
     # open an existing spreadsheet
     ss = ssmgr.OpenSpreadsheet(spreadsheet);
     
-    # modify cell E5 in the sheet
-    ssmgr.SetCellValue(ss, tab, cell, value);
-    
-    # save the changes
-    ssmgr.SaveSpreadsheet(ss); 
+    try:
+        # modify cell E5 in the sheet
+        ssmgr.SetCellValue(ss, tab, cell, value);
+        
+        # save the changes
+        ssmgr.SaveSpreadsheet(ss); 
+    finally:
+        ssmgr.CloseSpreadsheet(ss); 
 
 def WriteFile():
     """
