@@ -27,10 +27,10 @@ def RemovePreparedScripts(scriptPath):
     
     query = DHI.Solutions.Generic.Query()
     query.Add(DHI.Solutions.Generic.QueryElement("ScriptId", script.Id, DHI.Solutions.Generic.QueryOperator.Eq))
-    associatedPpreparedScripts = scriptModule.PreparedScriptList.Fetch(query);
+    associatedPreparedScripts = scriptModule.PreparedScriptList.Fetch(query);
     
-    if associatedPpreparedScripts.Count == 0:
+    if associatedPreparedScripts.Count == 0:
         raise System.ArgumentException('No prepared scripts found for the script.')
     
-    scriptModule.PreparedScriptList.Delete(associatedPpreparedScripts);
+    scriptModule.PreparedScriptList.Delete(associatedPreparedScripts);
     pass;
