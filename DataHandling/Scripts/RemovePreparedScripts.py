@@ -1,4 +1,5 @@
 import clr
+import sys
 clr.AddReference('DHI.Solutions.Generic')
 import DHI.Solutions.Generic
 import System
