@@ -1,1 +1,20 @@
-See origin site: http://dkprojects/99000025/community/Lists/Community%20Discussion/Flat.aspx?RootFolder=%2F99000025%2Fcommunity%2FLists%2FCommunity%20Discussion%2FScript%20for%20emailing%20%28client%20smpt%20server%20or%20gmail%29&FolderCTID=0x01200200C2D93B6CA4376E46B528ED3A60ED37FC
+When creating scripts using the MIKE OPERATIONS Desktop (RealtimeManager) API, the following section should be added to the runtime.config, 
+to make sure that threshold caching tables can be updated.
+
+<Product
+    Name="OperatorUI">
+    <Plugins>
+      <Plugin
+        Name="DHI.Solutions.RealtimeManager.Data.FakeDTO"
+        Type="DHI.Solutions.Generic.IDTO"
+        Assembly="DHI.Solutions.RealtimeManager.Data.dll" />
+      <Plugin
+        Name="DHI.Solutions.RealtimeManager.Business.RealtimeModule"
+        Type="DHI.Solutions.Generic.IModule"
+        Assembly="DHI.Solutions.RealtimeManager.Business.dll" />
+      <Plugin
+        Name="DHI.Solutions.RealtimeManager.Business.ThresholdCache"
+        Type="DHI.Solutions.Generic.IDTO"
+        Assembly="DHI.Solutions.RealtimeManager.Business.dll" />
+    </Plugins>
+  </Product>
